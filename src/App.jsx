@@ -9,18 +9,27 @@ function App() {
         <h1>React Investment Calculator</h1>
       </header>
       <body>
-        <div id="user-input">
-          <form className="input-group">
+        <form id="user-input">
+          <div className="input-group">
+            {" "}
             <label>Block 1</label>
+            <br />
             <input type="text"></input>
             <label>Block 2</label>
+            <br />
             <input type="text"></input>
-            <label>Block 3</label>
+          </div>
+
+          <div className="input-group">
+            {" "}
+            <label>Block 1</label>
+            <br />
             <input type="text"></input>
-            <label>Block 4</label>
+            <label>Block 2</label>
+            <br />
             <input type="text"></input>
-          </form>
-        </div>
+          </div>
+        </form>
       </body>
     </>
   );
