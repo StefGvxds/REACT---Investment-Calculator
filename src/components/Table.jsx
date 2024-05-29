@@ -1,8 +1,8 @@
 //Year                -> Duration
-//Investment Value    ->
-//Interest (Year)     ->
-//Total interest      ->
-//Invested capital    ->
+//Investment Value    -> investmentValue
+//Interest (Year)     -> interestEarnedInYear
+//Total interest      -> Map all interestEarnedInYear += interestEarnedInYear
+//Invested capital    -> initialInvestment += annualInvestment
 
 //table
 //thead

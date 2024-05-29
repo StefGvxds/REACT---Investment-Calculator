@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useEffect, useState } from "react";
 import "./index.css";
 import Header from "./components/Header";
 import UserInput from "./components/UserInput";
@@ -28,16 +28,24 @@ function App() {
     setDuration(e.target.value);
   }
 
-  function handleGetOutput() {
-    let updatedArray = calculateInvestmentResults(
-      initialInvestment,
-      annualInvestment,
-      expectedReturn,
-      duration
-    );
+  useEffect(() => {
+    function handleGetOutput() {
+      let updatedArray = calculateInvestmentResults(
+        initialInvestment,
+        annualInvestment,
+        expectedReturn,
+        duration
+      );
 
-    setGetOutput((updatedArray) => [...updatedArray]);
-  }
+      setGetOutput(updatedArray);
+    }
+
+    handleGetOutput();
+  }, [initialInvestment, annualInvestment, expectedReturn, duration]);
+
+  useEffect(() => {
+    console.log(getOutput);
+  }, [getOutput]);
 
   return (
     <>
