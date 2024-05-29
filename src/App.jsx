@@ -10,7 +10,7 @@ function App() {
   const [annualInvestment, setAnnualInvestment] = useState("");
   const [expectedReturn, setExpectedReturn] = useState("");
   const [duration, setDuration] = useState("");
-  const [output, setOutput] = useState([]);
+  const [getOutput, setGetOutput] = useState([]);
 
   function handleInitialInvestment(e) {
     setInitialInvestment(e.target.value);
@@ -26,6 +26,17 @@ function App() {
 
   function handleDuration(e) {
     setDuration(e.target.value);
+  }
+
+  function handleGetOutput() {
+    let updatedArray = calculateInvestmentResults(
+      initialInvestment,
+      annualInvestment,
+      expectedReturn,
+      duration
+    );
+
+    setGetOutput((updatedArray) => [...updatedArray]);
   }
 
   return (
@@ -56,3 +67,5 @@ function App() {
 }
 
 export default App;
+
+//https://www.youtube.com/watch?time_continue=512&v=Y62mbztjmus&embeds_referring_euri=https%3A%2F%2Fwww.google.com%2Fsearch%3Fq%3Dreact%2BuseState%2Bupdate%2Barray%26oq%3Dreact%2BuseState%2Bupdate%2Barray%26gs_lcrp%3DEgZjaHJvbWUyBggAEEUYOTIICAEQA&source_ve_path=Mjg2NjIsMjg2NjY&feature=emb_logo
