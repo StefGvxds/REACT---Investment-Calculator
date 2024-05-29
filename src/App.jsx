@@ -2,6 +2,7 @@ import { React, useState } from "react";
 import "./index.css";
 import Header from "./components/Header";
 import UserInput from "./components/UserInput";
+import Table from "./components/Table";
 
 function App() {
   const [initialInvestment, setInitialInvestment] = useState("");
@@ -44,16 +45,12 @@ function App() {
             fun2={handleDuration}
           />
         </section>
-        <section></section>
+        <section>
+          <Table getTableID="result" />
+        </section>
       </body>
     </>
   );
 }
 
 export default App;
-
-//Year
-//Investment Value
-//Interest (Year)
-//Total interest
-//Invested capital
