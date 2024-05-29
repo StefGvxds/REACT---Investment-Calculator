@@ -1,8 +1,8 @@
-//Year
-//Investment Value
-//Interest (Year)
-//Total interest
-//Invested capital
+//Year                -> Duration
+//Investment Value    ->
+//Interest (Year)     ->
+//Total interest      ->
+//Invested capital    ->
 
 //table
 //thead

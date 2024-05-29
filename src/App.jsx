@@ -3,12 +3,14 @@ import "./index.css";
 import Header from "./components/Header";
 import UserInput from "./components/UserInput";
 import Table from "./components/Table";
+import calculateInvestmentResults from "./util/investment.js";
 
 function App() {
   const [initialInvestment, setInitialInvestment] = useState("");
   const [annualInvestment, setAnnualInvestment] = useState("");
   const [expectedReturn, setExpectedReturn] = useState("");
   const [duration, setDuration] = useState("");
+  const [output, setOutput] = useState([]);
 
   function handleInitialInvestment(e) {
     setInitialInvestment(e.target.value);
