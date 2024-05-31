@@ -28,24 +28,22 @@ function App() {
     setDuration(e.target.value);
   }
 
-  useEffect(() => {
-    function handleGetOutput() {
-      let updatedArray = calculateInvestmentResults(
-        initialInvestment,
-        annualInvestment,
-        expectedReturn,
-        duration
-      );
+  // function clearArray() {
+  //   setGetOutput((oldArray) => []);
+  // }
 
-      setGetOutput(updatedArray);
-    }
-
-    handleGetOutput();
-  }, [initialInvestment, annualInvestment, expectedReturn, duration]);
-
-  useEffect(() => {
+  function handleGetOutput() {
+    setGetOutput(
+      (prevAr) =>
+        (prevAr = calculateInvestmentResults({
+          initialInvestment: initialInvestment,
+          annualInvestment: annualInvestment,
+          expectedReturn: expectedReturn,
+          duration: duration,
+        }))
+    );
     console.log(getOutput);
-  }, [getOutput]);
+  }
 
   return (
     <>
@@ -58,12 +56,14 @@ function App() {
             label2="Annual Investment"
             fun1={handleInitialInvestment}
             fun2={handleAnnualInvestment}
+            updateTable={handleGetOutput}
           />
           <UserInput
             label1="Expected Return"
             label2="Duration"
             fun1={handleExpectedReturn}
             fun2={handleDuration}
+            updateTable={handleGetOutput}
           />
         </section>
         <section>
