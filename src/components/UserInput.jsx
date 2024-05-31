@@ -5,12 +5,12 @@ export default function UserInput({ label1, label2, fun1, fun2 }) {
         <p>
           {" "}
           <label>{label1}</label>
-          <input type="text" onChange={fun1}></input>
+          <input type="text" onChange={fun1} required></input>
         </p>
         <p>
           {" "}
           <label>{label2}</label>
-          <input type="text" onChange={fun2}></input>
+          <input type="text" onChange={fun2} required></input>
         </p>
       </div>
     </>
