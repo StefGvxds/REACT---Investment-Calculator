@@ -10,21 +10,20 @@
 //tr - Table Row
 //th - Table header
 //td - table data
+import React from "react";
 
 export default function Table({ getTableID }) {
   return (
-    <>
-      <table id={getTableID}>
-        <thead>
-          <tr>
-            <th>Year</th>
-            <th>Investment Value</th>
-            <th>Interest (Year)</th>
-            <th>Total interest</th>
-            <th>Invested capital</th>
-          </tr>
-        </thead>
-      </table>
-    </>
+    <table id={getTableID}>
+      <thead>
+        <tr>
+          <th>Year</th>
+          <th>Investment Value</th>
+          <th>Interest (Year)</th>
+          <th>Total interest</th>
+          <th>Invested capital</th>
+        </tr>
+      </thead>
+    </table>
   );
 }

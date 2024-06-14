@@ -14,26 +14,26 @@ function App() {
   });
 
   function handleUserInput(selectIdentifier, newInput) {
-    setUserInput((oldArray) => {
+    setUserInput((oldObject) => {
       return {
-        ...oldArray,
+        ...oldObject,
         [selectIdentifier]: newInput,
       };
     });
   }
 
-  // function handleGetOutput() {
-  //   setGetOutput(
-  //     (prevAr) =>
-  //       (prevAr = calculateInvestmentResults({
-  //         initialInvestment: initialInvestment,
-  //         annualInvestment: annualInvestment,
-  //         expectedReturn: expectedReturn,
-  //         duration: duration,
-  //       }))
-  //   );
-  //   console.log(getOutput);
-  // }
+  function handleGetOutput() {
+    setGetOutput(
+      (prevAr) =>
+        (prevAr = calculateInvestmentResults({
+          initialInvestment: initialInvestment,
+          annualInvestment: annualInvestment,
+          expectedReturn: expectedReturn,
+          duration: duration,
+        }))
+    );
+    console.log(getOutput);
+  }
 
   return (
     <>
@@ -44,16 +44,19 @@ function App() {
           <UserInput
             label1="Initial Investment"
             label2="Annual Investment"
-            fun1={handleUserInput()}
-            fun2={handleUserInput()}
-            updateTable={handleGetOutput}
+            investment={userInput.initialInvestment}
+            fun1={handleUserInput}
+            fun2={handleUserInput}
+            value1={userInput.initialInvestment}
+            value2={userInput.annualInvestment}
           />
           <UserInput
             label1="Expected Return"
             label2="Duration"
-            fun1={handleUserInput()}
-            fun2={handleUserInput()}
-            updateTable={handleGetOutput}
+            fun1={handleUserInput}
+            fun2={handleUserInput}
+            value1={userInput.expectedReturn}
+            value2={userInput.duration}
           />
         </section>
         <section>
