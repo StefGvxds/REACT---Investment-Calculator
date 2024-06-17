@@ -6,13 +6,13 @@
 
 //table
 //thead
-//tbody
+//tbody - table body
 //tr - Table Row
 //th - Table header
 //td - table data
 import React from "react";
 
-export default function Table({ getTableID }) {
+export default function Table({ getTableID, tableOutput }) {
   return (
     <table id={getTableID}>
       <thead>
@@ -24,6 +24,20 @@ export default function Table({ getTableID }) {
           <th>Invested capital</th>
         </tr>
       </thead>
+      <tbody>
+        {tableOutput.map((row, index) => {
+          totalInterest += row.interest;
+          return (
+            <tr key={index}>
+              <td>{row.year}</td>
+              <td>{row.valueEndOfYear.toFixed(2)}</td>
+              <td>{row.interest.toFixed(2)}</td>
+              <td>{totalInterest.toFixed(2)}</td>
+              <td>{row.annualInvestment.toFixed(2)}</td>
+            </tr>
+          );
+        })}
+      </tbody>
     </table>
   );
 }

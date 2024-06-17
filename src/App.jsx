@@ -22,47 +22,46 @@ function App() {
     });
   }
 
-  function handleGetOutput() {
-    setGetOutput(
-      (prevAr) =>
-        (prevAr = calculateInvestmentResults({
-          initialInvestment: initialInvestment,
-          annualInvestment: annualInvestment,
-          expectedReturn: expectedReturn,
-          duration: duration,
-        }))
+  const [tableOutput, setTableoutput] = useState([]);
+
+  useEffect(() => {
+    const results = calculateInvestmentResults(
+      userInput.initialInvestment,
+      userInput.annualInvestment,
+      userInput.expectedReturn,
+      userInput.duration
     );
-    console.log(getOutput);
-  }
+
+    setTableoutput((prevAr) => results);
+    console.log(results);
+  }, [userInput]);
 
   return (
     <>
       <Header idName="header" />
 
-      <body>
-        <section id="user-input">
-          <UserInput
-            label1="Initial Investment"
-            label2="Annual Investment"
-            investment={userInput.initialInvestment}
-            fun1={handleUserInput}
-            fun2={handleUserInput}
-            value1={userInput.initialInvestment}
-            value2={userInput.annualInvestment}
-          />
-          <UserInput
-            label1="Expected Return"
-            label2="Duration"
-            fun1={handleUserInput}
-            fun2={handleUserInput}
-            value1={userInput.expectedReturn}
-            value2={userInput.duration}
-          />
-        </section>
-        <section>
-          <Table getTableID="result" />
-        </section>
-      </body>
+      <section id="user-input">
+        <UserInput
+          label1="Initial Investment"
+          label2="Annual Investment"
+          investment={userInput.initialInvestment}
+          fun1={handleUserInput}
+          fun2={handleUserInput}
+          value1={userInput.initialInvestment}
+          value2={userInput.annualInvestment}
+        />
+        <UserInput
+          label1="Expected Return"
+          label2="Duration"
+          fun1={handleUserInput}
+          fun2={handleUserInput}
+          value1={userInput.expectedReturn}
+          value2={userInput.duration}
+        />
+      </section>
+      <section>
+        <Table getTableID="result" tableOutput={tableOutput} />
+      </section>
     </>
   );
 }
