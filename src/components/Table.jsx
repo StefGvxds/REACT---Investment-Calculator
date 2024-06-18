@@ -11,6 +11,7 @@
 //th - Table header
 //td - table data
 import React from "react";
+import { formatter } from "../util/investment.js";
 
 export default function Table({ getTableID, tableOutput }) {
   return (
@@ -26,14 +27,13 @@ export default function Table({ getTableID, tableOutput }) {
       </thead>
       <tbody>
         {tableOutput.map((row, index) => {
-          totalInterest += row.interest;
           return (
             <tr key={index}>
               <td>{row.year}</td>
-              <td>{row.valueEndOfYear.toFixed(2)}</td>
-              <td>{row.interest.toFixed(2)}</td>
-              <td>{totalInterest.toFixed(2)}</td>
-              <td>{row.annualInvestment.toFixed(2)}</td>
+              <td>{formatter.format(row.valueEndOfYear)}</td>
+              <td>{formatter.format(row.interest)}</td>
+              <td>{formatter.format(row.totalInterest)}</td>
+              <td>{formatter.format(row.annualInvestment)}</td>
             </tr>
           );
         })}

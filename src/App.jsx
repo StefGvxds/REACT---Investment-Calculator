@@ -13,27 +13,37 @@ function App() {
     duration: "",
   });
 
-  function handleUserInput(selectIdentifier, newInput) {
-    setUserInput((oldObject) => {
-      return {
-        ...oldObject,
-        [selectIdentifier]: newInput,
-      };
-    });
+  function handleUserInput(name, newValue) {
+    setUserInput((oldState) => ({
+      ...oldState,
+      [name]: +newValue,
+    }));
   }
 
   const [tableOutput, setTableoutput] = useState([]);
 
   useEffect(() => {
-    const results = calculateInvestmentResults(
-      userInput.initialInvestment,
-      userInput.annualInvestment,
-      userInput.expectedReturn,
+    if (
+      userInput.initialInvestment &&
+      userInput.annualInvestment &&
+      userInput.expectedReturn &&
       userInput.duration
-    );
+    ) {
+      const results = calculateInvestmentResults({
+        initialInvestment: userInput.initialInvestment,
+        annualInvestment: userInput.annualInvestment,
+        expectedReturn: userInput.expectedReturn,
+        duration: userInput.duration,
+      });
 
-    setTableoutput((prevAr) => results);
-    console.log(results);
+      setTableoutput((prevAr) => results);
+      console.log("APP-Results", results);
+      console.log("APP-UserInput:", userInput);
+      console.log("APP-initialInvestment:", userInput.initialInvestment);
+      console.log("APP-annualInvestment:", userInput.annualInvestment);
+      console.log("APP-expectedReturn:", userInput.expectedReturn);
+      console.log("APP-duration:", userInput.duration);
+    }
   }, [userInput]);
 
   return (
@@ -42,17 +52,16 @@ function App() {
 
       <section id="user-input">
         <UserInput
-          label1="Initial Investment"
-          label2="Annual Investment"
-          investment={userInput.initialInvestment}
+          label1="initialInvestment"
+          label2="annualInvestment"
           fun1={handleUserInput}
           fun2={handleUserInput}
           value1={userInput.initialInvestment}
           value2={userInput.annualInvestment}
         />
         <UserInput
-          label1="Expected Return"
-          label2="Duration"
+          label1="expectedReturn"
+          label2="duration"
           fun1={handleUserInput}
           fun2={handleUserInput}
           value1={userInput.expectedReturn}
@@ -67,5 +76,3 @@ function App() {
 }
 
 export default App;
-
-//https://www.youtube.com/watch?time_continue=512&v=Y62mbztjmus&embeds_referring_euri=https%3A%2F%2Fwww.google.com%2Fsearch%3Fq%3Dreact%2BuseState%2Bupdate%2Barray%26oq%3Dreact%2BuseState%2Bupdate%2Barray%26gs_lcrp%3DEgZjaHJvbWUyBggAEEUYOTIICAEQA&source_ve_path=Mjg2NjIsMjg2NjY&feature=emb_logo

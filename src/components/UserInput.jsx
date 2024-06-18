@@ -1,7 +1,6 @@
 export default function UserInput({
   label1,
   label2,
-  investment,
   fun1,
   fun2,
   value1,
@@ -14,7 +13,8 @@ export default function UserInput({
         <label>{label1}</label>
         <input
           type="number"
-          onChange={(event) => fun1(investment, event.target.value)}
+          onChange={(event) => fun1(label1, event.target.value)}
+          name={label1}
           value={value1}
           required
         ></input>
@@ -24,7 +24,8 @@ export default function UserInput({
         <label>{label2}</label>
         <input
           type="number"
-          onChange={(event) => fun2(investment, event.target.value)}
+          onChange={(event) => fun2(label2, event.target.value)}
+          name={label2}
           value={value2}
           required
         ></input>
